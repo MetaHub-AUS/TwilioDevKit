@@ -3,17 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@aws-amplify/datastore": "^5.1.1",
+    "@aws-amplify/ui-react": "^6.11.2",
+    "@aws-sdk/client-bedrock-runtime": "^3.941.0",
+    "@aws-sdk/client-connect": "^3.940.0",
+    "@aws-sdk/client-dynamodb": "^3.940.0",
+    "@aws-sdk/lib-dynamodb": "^3.940.0",
     "ajv": "^8.12.0",
     "ajv-keywords": "^5.1.0",
+    "aws-amplify": "^6.15.4",
     "concurrently": "^9.1.0",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "express": "^4.21.1",
+    "jspdf": "^3.0.4",
+    "jspdf-autotable": "^5.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^6.23.0",
+    "react-scripts": "^5.0.1",
+    "uuid": "^13.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "server": "node server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run start\""
   },
