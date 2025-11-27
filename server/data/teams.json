@@ -1,0 +1,30 @@
+
+[
+    {
+        "teamNumber": "60",
+        "type": "UTV",
+        "leader": "Sarah Connor",
+        "status": "ACTIVE",
+        "location": "Gold Coast - Sector 4",
+        "skills": ["Rough Terrain", "Surveillance"],
+        "battery": 85
+    },
+    {
+        "teamNumber": "K9-2",
+        "type": "K9",
+        "leader": "Max Rockatansky",
+        "status": "BUSY",
+        "location": "Brisbane South",
+        "skills": ["Odour Detection", "Rapid Scan"],
+        "battery": 60
+    },
+    {
+        "teamNumber": "AERIAL-1",
+        "type": "DRONE",
+        "leader": "Cipher",
+        "status": "CHARGING",
+        "location": "Depot HQ",
+        "skills": ["Aerial Mapping", "Zone A Treatment"],
+        "battery": 15
+    }
+]

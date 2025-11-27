@@ -1,0 +1,23 @@
+
+.main-3col { display: grid; grid-template-columns: 300px 350px 1fr; gap: 20px; height: calc(100vh - 80px); }
+
+/* Modal Styles */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; border-radius: 8px; width: 500px; padding: 0; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+.modal-content.large { width: 800px; height: 80vh; display: flex; flex-direction: column; }
+.modal-header { padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+.close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+
+/* Slot Grid */
+.slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; padding: 25px; overflow-y: auto; background: #f4f7f6; flex: 1; }
+.slot-card { background: white; padding: 15px; border-radius: 6px; border-left: 5px solid #ccc; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.slot-card.OPEN { border-left-color: #28a745; }
+.slot-card.BOOKED { border-left-color: #01BAEF; background: #e6f7ff; }
+.ai-badge { font-size: 11px; font-weight: bold; margin: 5px 0; text-transform: uppercase; }
+
+/* Mini Modal (Booking) */
+.mini-modal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 400px; border: 2px solid #008080; }
+.hazard-warning { background: #fff5f5; border: 1px solid #ffcccc; color: #d8000c; padding: 10px; border-radius: 4px; margin: 10px 0; font-weight: bold; font-size: 13px; }
+.gov-btn.small { padding: 5px 10px; font-size: 12px; margin-top: 5px; width: 100%; }
+.action-row { display: flex; gap: 10px; margin-top: 20px; }
+.gov-btn.secondary { background: #666; }
