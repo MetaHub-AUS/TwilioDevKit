@@ -37,8 +37,29 @@ export class FieldTeamData {
         this.teamLeader = init.teamLeader;
         this.phone = init.phone;
         this.email = init.email;
+
+        // Alternate Leader Information
+        this.altLeader = init.altLeader;
+        this.altEmail = init.altEmail;
+        this.altPhone = init.altPhone;
+
+        // Area Information
         this.area = init.area;
+        this.areaCoordinator = init.areaCoordinator;
+        this.areaCoordinatorEmail = init.areaCoordinatorEmail;
+
+        // Team Details
         this.type = init.type;
+        this.depotLocation = init.depotLocation;
+        this.manager = init.manager;
+
+        // Metadata
+        this.lastUpdated = init.lastUpdated;
+        this.version = init.version;
+        this.createdAt = init.createdAt;
+        this.updatedAt = init.updatedAt;
+
+        // UI State
         this.status = init.status || 'ACTIVE'; // Added for UI state
         this.battery = init.battery || 100;    // Added for UI state
     }
