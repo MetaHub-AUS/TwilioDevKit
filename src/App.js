@@ -4,10 +4,11 @@ import GeminiCommLink from './components/GeminiCommLink';
 import RevisitTable from './components/revisit/RevisitTable';
 import SmartSurvey from './components/SmartSurvey';
 import TeamCommand from './components/TeamCommand';
+import FieldDashboard from './components/field/FieldDashboard';
 import './styles.css';
 
 function App() {
-  // STATE: Simulating the Authentication Context from Audit 3.2
+  // STATE: Simulating the Authentication Context
   const [userRole, setUserRole] = useState('Agent'); // 'Agent' or 'FieldLeader'
   const [activeTab, setActiveTab] = useState('command');
 
@@ -32,22 +33,30 @@ function App() {
         </div>
         
         <nav className="header-nav">
-            {/* CONDITIONAL RENDERING: Agents see Command, Leaders see Assets */}
-            <button 
+            {/* CONDITIONAL RENDERING: Agents see Command, Leaders see Assets + Routes */}
+            <button
                 className={`nav-tab ${activeTab === 'command' ? 'active' : ''}`}
                 onClick={() => setActiveTab('command')}
             >
                 📡 Command Center
             </button>
-            
-            {/* Only Field Leaders can access the Asset Dashboard */}
+
+            {/* Only Field Leaders can access the Asset Dashboard and Route Planner */}
             {userRole === 'FieldLeader' && (
-                <button 
-                    className={`nav-tab ${activeTab === 'assets' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('assets')}
-                >
-                    🚁 Field Assets
-                </button>
+                <>
+                    <button
+                        className={`nav-tab ${activeTab === 'assets' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('assets')}
+                    >
+                        🚁 Field Assets
+                    </button>
+                    <button
+                        className={`nav-tab ${activeTab === 'routes' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('routes')}
+                    >
+                        🧭 Route Planner
+                    </button>
+                </>
             )}
         </nav>
 
@@ -65,23 +74,26 @@ function App() {
         </div>
       </header>
 
-      <main className={activeTab === 'assets' ? "full-canvas" : "workspace-grid"}>
-        
+      <main className={(activeTab === 'assets' || activeTab === 'routes') ? "full-canvas" : "workspace-grid"}>
+
         {/* VIEW 1: FIELD ASSETS (Conditional) */}
         {activeTab === 'assets' ? (
             <TeamCommand />
+        ) : activeTab === 'routes' ? (
+            /* VIEW 2: ROUTE PLANNER (Field Leaders only) */
+            <FieldDashboard />
         ) : (
-            /* VIEW 2: AGENT WORKSPACE (3-Column) */
+            /* VIEW 3: AGENT WORKSPACE (3-Column) - DEFAULT */
             <>
                 <div className="col-left">
                     <GeminiCommLink />
                 </div>
-                
+
                 <div className="col-middle">
                     {/* Passes userRole so the Table can show extra "Admin" buttons if needed */}
                     <RevisitTable isOpen={true} role={userRole} />
                 </div>
-                
+
                 <div className="col-right">
                     <div className="ai-widget-card">
                         <div className="widget-header">🤖 Active Intelligence</div>

@@ -1,0 +1,183 @@
+# NFAEP EST BackUp - GraphQL Schema
+# National Fire Ant Eradication Program - Estimation & Scheduling Tool
+
+# Enums
+enum SlotStatus {
+  OPEN
+  HOLD
+  BOOKED
+  COMPLETED
+  NEEDS_REBOOK
+}
+
+# Core Data Models
+
+type AppointmentSlot @model @auth(rules: [{allow: public}]) {
+  siteDate: ID! @primaryKey(sortKeyFields: ["time"])
+  time: String!
+  status: SlotStatus!
+  clientId: String
+  propertyId: String
+  notes: String
+  lastUpdated: AWSDateTime!
+  version: Int!
+  lockExpiresAt: AWSTimestamp
+  jobNumber: String
+  siteCode: String
+  propertySizeHa: Float
+  address: String
+  teamNumberFound: String
+  estInitial: String
+  comment: String
+  customerName: String
+  customerPhone: String
+}
+
+type FieldTeamData @model @auth(rules: [{allow: public}]) {
+  teamNumber: ID! @primaryKey
+  teamLeader: String!
+  phone: String!
+  email: String!
+  altLeader: String
+  altPhone: String
+  altEmail: String
+  area: String!
+  areaCoordinator: String
+  areaCoordinatorEmail: String
+  manager: String
+  type: String
+  depotLocation: String
+  lastUpdated: AWSDateTime!
+  version: Int!
+}
+
+type OptimizedRoute @model @auth(rules: [{allow: public}]) {
+  routeId: ID! @primaryKey
+  date: AWSDate!
+  siteId: String!
+  routeData: AWSJSON!
+  summary: AWSJSON
+  createdAt: AWSDateTime!
+  createdBy: String
+  jobId: String
+}
+
+# Input Types for Mutations
+input BookingInput {
+  time: String!
+  address: String!
+  jobNumber: String
+  siteCode: String
+  propertySizeHa: Float
+  teamNumberFound: String
+  comment: String
+}
+
+# Response Types
+type RouteJobResponse {
+  jobId: ID!
+  status: String!
+}
+
+type RouteJobStatus {
+  jobId: ID!
+  status: String!
+  result: AWSJSON
+  error: String
+  createdAt: AWSDateTime
+}
+
+type ConnectMetrics {
+  contactsInQueue: Int!
+  agentsAvailable: Int!
+  oldestContactAgeSeconds: Int!
+  lastUpdated: AWSDateTime!
+}
+
+# Queries
+type Query {
+  getRouteJob(jobId: ID!): RouteJobStatus
+    @function(name: "nfaepGetRouteJob-${env}")
+
+  getConnectMetrics: ConnectMetrics
+    @function(name: "nfaepContactMetrics-${env}")
+}
+
+# Mutations
+type Mutation {
+  # Slot State Transitions
+  holdSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    expectedVersion: Int!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  releaseSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    expectedVersion: Int!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  bookSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    clientId: String
+    propertyId: String
+    expectedVersion: Int!
+    jobNumber: String
+    siteCode: String
+    propertySizeHa: Float
+    address: String
+    teamNumberFound: String
+    estInitial: String
+    comment: String
+    customerName: String
+    customerPhone: String
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  completeSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    expectedVersion: Int!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  rebookSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    newDate: AWSDate!
+    newTime: String!
+    expectedVersion: Int!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  adminOpenSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  cancelSlot(
+    siteId: String!
+    date: AWSDate!
+    time: String!
+    expectedVersion: Int!
+  ): AppointmentSlot
+    @function(name: "nfaepSlotMutations-${env}")
+
+  # Route Optimization
+  submitRouteJob(
+    bookings: [BookingInput!]!
+    date: AWSDate!
+  ): RouteJobResponse
+    @function(name: "nfaepRouteOptimizer-${env}")
+}
