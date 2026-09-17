@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2F0C507E-27AA-4E78-BBE9-BCB45A30A526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwilioDevKit", "src\TwilioDevKit\TwilioDevKit.csproj", "{DB9B598D-B0CF-4BB0-A07A-D7713B01E107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwilioDevKit.AspNetCore", "src\TwilioDevKit.AspNetCore\TwilioDevKit.AspNetCore.csproj", "{C132F3D3-2496-43F8-9CFE-95F93AB0E361}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{CA1C45D0-204B-4AD2-8F37-6FE63B71E2AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "samples\SampleApp\SampleApp.csproj", "{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C0D7942D-FE97-499E-A67C-AAF9AC91E3FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwilioDevKit.Tests", "tests\TwilioDevKit.Tests\TwilioDevKit.Tests.csproj", "{07621124-B1DC-49D4-B2F0-BD1ADAF2B837}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB9B598D-B0CF-4BB0-A07A-D7713B01E107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9B598D-B0CF-4BB0-A07A-D7713B01E107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9B598D-B0CF-4BB0-A07A-D7713B01E107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9B598D-B0CF-4BB0-A07A-D7713B01E107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C132F3D3-2496-43F8-9CFE-95F93AB0E361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C132F3D3-2496-43F8-9CFE-95F93AB0E361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C132F3D3-2496-43F8-9CFE-95F93AB0E361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C132F3D3-2496-43F8-9CFE-95F93AB0E361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07621124-B1DC-49D4-B2F0-BD1ADAF2B837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07621124-B1DC-49D4-B2F0-BD1ADAF2B837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07621124-B1DC-49D4-B2F0-BD1ADAF2B837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07621124-B1DC-49D4-B2F0-BD1ADAF2B837}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB9B598D-B0CF-4BB0-A07A-D7713B01E107} = {2F0C507E-27AA-4E78-BBE9-BCB45A30A526}
+		{C132F3D3-2496-43F8-9CFE-95F93AB0E361} = {2F0C507E-27AA-4E78-BBE9-BCB45A30A526}
+		{BB88C89C-C22D-46E4-B549-A6BCE8DE42B6} = {CA1C45D0-204B-4AD2-8F37-6FE63B71E2AB}
+		{07621124-B1DC-49D4-B2F0-BD1ADAF2B837} = {C0D7942D-FE97-499E-A67C-AAF9AC91E3FF}
+	EndGlobalSection
+EndGlobal
